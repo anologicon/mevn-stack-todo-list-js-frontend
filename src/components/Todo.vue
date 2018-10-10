@@ -7,7 +7,7 @@
           <input type="text" placeholder="I have make a ..." v-model="todoName" id="todo-name" @keypress="typing = true">
           <span class="typing-press" v-show="typing">Press enter to save ...</span>
         </form>
-          
+        <list></list>
       </div>
     </div>
   </div>
@@ -37,9 +37,9 @@ export default {
         console.log(error);
       });
     },
-    components: {
-      List,
-    },
+  },
+  components: {
+    List,
   },
 };
 </script>
