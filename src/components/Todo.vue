@@ -3,16 +3,20 @@
     <h1>What i do now?</h1>
     <div class="container">
       <div class="box-input">
-        <form @submit="save">
+        <form @submit.prevent="save">
           <input type="text" placeholder="I have make a ..." v-model="todoName" id="todo-name" @keypress="typing = true">
-          <span class="typing" v-show="typing">Press enter to save ...</span>
+          <span class="typing-press" v-show="typing">Press enter to save ...</span>
         </form>
+          
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import List from '@/components/List';
+
 export default {
   name: 'todo',
   data() {
@@ -20,6 +24,22 @@ export default {
       todoName: '',
       typing: false,
     };
+  },
+  methods: {
+    save() {
+      axios.post('http://localhost:7000/api/add', {
+        name: this.todoName,
+        done: false,
+      }).then(() => {
+        this.typing = false;
+        this.todoName = '';
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+    components: {
+      List,
+    },
   },
 };
 </script>
@@ -36,6 +56,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .item {
+    padding: 20px;
   }
 
   input {
@@ -56,7 +80,7 @@ export default {
     margin: 0 0 10px 0;
   }
   
-  .typing {
+  .typing-press {
     font-style: italic;
     font-size: 0.8em;
     box-shadow: inset 0 0 8px rgba(0,0,0,0.1), 0 0 16px rgba(0,0,0,0.1);
