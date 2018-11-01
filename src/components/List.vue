@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     list() {
-      axios.get('http://localhost:7000/api/all')
+      axios.get('https://what-i-todo-now.herokuapp.com/api/all')
         .then((response) => {
           this.todos = response.data;
         }).catch((error) => {
@@ -30,7 +30,7 @@ export default {
     makeDone(todo) {
       const todoDoned = todo;
 
-      const URL = `http://localhost:7000/api/update/${todo.id}`;
+      const URL = `https://what-i-todo-now.herokuapp.com/api/update/${todo.id}`;
 
       let doneBool = false;
       if (!todo.done) {

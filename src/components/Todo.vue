@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     save() {
-      axios.post('http://localhost:7000/api/add', {
+      axios.post('https://what-i-todo-now.herokuapp.com/api/add', {
         name: this.todoName,
         done: false,
       }).then(() => {

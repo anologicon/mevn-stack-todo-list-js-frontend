@@ -4,10 +4,11 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
+.firebaserc
 # Editor directories and files
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.firebase
