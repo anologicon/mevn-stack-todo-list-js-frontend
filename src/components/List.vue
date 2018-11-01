@@ -1,7 +1,7 @@
 <template>
     <div class="list container">
-        <div v-for="todo in todos" :key="todo.key" class="item">
-            <div @click="makeDone(todo)" :class="[{ done: todo.done }]">{{ todo.name }}</div>
+        <div v-for="todo in todos" :key="todo.key" @click="makeDone(todo)" class="item">
+            <div  :class="[todo.done ? 'done' : '']">{{ todo.name }}</div>
         </div>
     </div>
 </template>
@@ -30,10 +30,16 @@ export default {
     makeDone(todo) {
       const todoDoned = todo;
 
-      const URL = `http://localhost:7000/api/update/${todoDoned._id}`;
-      const doneBool = todo.done ? 'false' : 'true';
+      const URL = `http://localhost:7000/api/update/${todo.id}`;
+
+      let doneBool = false;
+      if (!todo.done) {
+        doneBool = true;
+      }
+
       console.log('Atualizado');
-      todoDoned.doneBool = true;
+      console.log(doneBool);
+      todoDoned.done = doneBool;
       axios.post(URL, {
         done: doneBool,
         name: todoDoned.name,
