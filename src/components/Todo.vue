@@ -28,6 +28,10 @@ export default {
   },
   methods: {
     save() {
+      if (this.todoName === '') {
+        return false;
+      }
+
       axios.post('https://what-i-todo-now.herokuapp.com/api/add', {
         name: this.todoName,
         done: false,
@@ -39,6 +43,8 @@ export default {
       }).catch((error) => {
         console.log(error);
       });
+
+      return true;
     },
   },
   components: {
