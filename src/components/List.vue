@@ -74,6 +74,7 @@ export default {
         padding: 15px;
         background: rgba(255,255,255,0.5);
         margin: 0 0 10px 0;
+        cursor: pointer;
     }
 
     .done {
