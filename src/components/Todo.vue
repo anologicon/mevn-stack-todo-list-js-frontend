@@ -16,6 +16,7 @@
 <script>
 import axios from 'axios';
 import List from '@/components/List';
+import bus from './../../public/bus';
 
 export default {
   name: 'todo',
@@ -33,6 +34,8 @@ export default {
       }).then(() => {
         this.typing = false;
         this.todoName = '';
+
+        bus.$emit('listar');
       }).catch((error) => {
         console.log(error);
       });

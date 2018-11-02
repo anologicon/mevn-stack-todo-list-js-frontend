@@ -7,6 +7,7 @@
 </template>
 <script>
 import axios from 'axios';
+import bus from './../../public/bus';
 
 export default {
   name: 'list',
@@ -17,6 +18,11 @@ export default {
   },
   mounted() {
     this.list();
+  },
+  created() {
+    bus.$on('listar', () => {
+      this.list();
+    });
   },
   methods: {
     list() {
@@ -31,7 +37,6 @@ export default {
       const todoDoned = todo;
 
       const URL = `https://what-i-todo-now.herokuapp.com/api/update/${todo.id}`;
-
       let doneBool = false;
       if (!todo.done) {
         doneBool = true;
