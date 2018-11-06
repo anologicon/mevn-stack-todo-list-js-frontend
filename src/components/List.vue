@@ -42,8 +42,6 @@ export default {
         doneBool = true;
       }
 
-      console.log('Atualizado');
-      console.log(doneBool);
       todoDoned.done = doneBool;
       axios.post(URL, {
         done: doneBool,
