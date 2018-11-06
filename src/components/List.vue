@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     list() {
-      axios.get('https://what-i-todo-now.herokuapp.com/api/all')
+      axios.get('https://wat-do-i-do-now.herokuapp.com/api/all')
         .then((response) => {
           this.todos = response.data;
         }).catch((error) => {
@@ -36,7 +36,7 @@ export default {
     makeDone(todo) {
       const todoDoned = todo;
 
-      const URL = `https://what-i-todo-now.herokuapp.com/api/update/${todo.id}`;
+      const URL = `https://wat-do-i-do-now.herokuapp.com/api/update/${todo.id}`;
       let doneBool = false;
       if (!todo.done) {
         doneBool = true;

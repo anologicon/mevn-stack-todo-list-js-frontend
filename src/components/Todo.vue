@@ -32,7 +32,7 @@ export default {
         return false;
       }
 
-      axios.post('https://what-i-todo-now.herokuapp.com/api/add', {
+      axios.post('https://wat-do-i-do-now.herokuapp.com/api/add', {
         name: this.todoName,
         done: false,
       }).then(() => {
