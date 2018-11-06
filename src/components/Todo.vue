@@ -1,6 +1,6 @@
 <template>
   <div class="todo">
-    <h1>What i do now?</h1>
+    <h1>What do i do now?</h1>
     <div class="container">
       <div class="box-input">
         <form @submit.prevent="save">
