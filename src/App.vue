@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <span>A nice todo List - With MENV stack</span>
+      <span>A nice todo List - With MENV stacknpm </span>
     </header>
     <main>
       <router-view></router-view>
