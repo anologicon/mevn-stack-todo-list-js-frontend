@@ -1,7 +1,10 @@
 <template>
     <div class="list container">
-        <div v-for="todo in todos" :key="todo.key" @click="makeDone(todo)" class="item">
-            <div  :class="[todo.done ? 'done' : '']">{{ todo.name }}</div>
+        <div v-for="todo in todos" :key="todo.key" @click="makeDone(todo)">
+            <div class="container-itens">
+              <div :class="[todo.done ? 'done' : '']"  class="item">{{ todo.name }}</div>
+              <div class="remover">X</div>
+            </div>
         </div>
     </div>
 </template>
@@ -73,6 +76,26 @@ export default {
         background: rgba(255,255,255,0.5);
         margin: 0 0 10px 0;
         cursor: pointer;
+    }
+
+    .remover {
+        display: flex;
+        width: 20px;
+        border: 5px solid rgba(255, 151, 151, 0.49019607843137253); 
+        -webkit-box-shadow: 
+        inset 0 0 8px  rgba(0,0,0,0.1),
+                0 0 16px rgba(0,0,0,0.1); 
+        -moz-box-shadow: 
+        inset 0 0 8px  rgba(0,0,0,0.1),
+                0 0 16px rgba(0,0,0,0.1); 
+        box-shadow: 
+        inset 0 0 8px  rgba(0,0,0,0.1),
+                0 0 16px rgba(0,0,0,0.1); 
+        padding: 15px;
+        background: rgba(255,255,255,0.5);
+        margin: 0 0 10px 0;
+        cursor: pointer;
+        align-content: center;
     }
 
     .done {

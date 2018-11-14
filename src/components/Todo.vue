@@ -67,6 +67,11 @@ export default {
     align-items: center;
   }
 
+  .container-itens {
+    display: flex;
+    flex-direction: row;
+  }
+
   .item {
     padding: 20px;
   }
