@@ -1,8 +1,8 @@
 <template>
     <div class="list container">
-        <div v-for="todo in todos" :key="todo.key" @click="makeDone(todo)">
+        <div v-for="todo in todos" :key="todo.key">
             <div class="container-itens">
-              <div :class="[todo.done ? 'done' : '']"  class="item">{{ todo.name }}</div>
+              <div :class="[todo.done ? 'done' : '']"  class="item"  @click="makeDone(todo)">{{ todo.name }}</div>
               <div class="remover">X</div>
             </div>
         </div>
@@ -11,6 +11,9 @@
 <script>
 import axios from 'axios';
 import bus from './../../public/bus';
+import url from './../../public/baseUrl';
+
+console.log(url);
 
 export default {
   name: 'list',
@@ -29,7 +32,7 @@ export default {
   },
   methods: {
     list() {
-      axios.get('https://wat-do-i-do-now.herokuapp.com/api/all')
+      axios.get(`${url}/api/all`)
         .then((response) => {
           this.todos = response.data;
         }).catch((error) => {
@@ -39,7 +42,7 @@ export default {
     makeDone(todo) {
       const todoDoned = todo;
 
-      const URL = `https://wat-do-i-do-now.herokuapp.com/api/update/${todo.id}`;
+      const URL = `${url}/api/update/${todo.id}`;
       let doneBool = false;
       if (!todo.done) {
         doneBool = true;

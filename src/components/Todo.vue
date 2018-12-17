@@ -17,6 +17,7 @@
 import axios from 'axios';
 import List from '@/components/List';
 import bus from './../../public/bus';
+import url from './../../public/baseUrl';
 
 export default {
   name: 'todo',
@@ -32,7 +33,7 @@ export default {
         return false;
       }
 
-      axios.post('https://wat-do-i-do-now.herokuapp.com/api/add', {
+      axios.post(`${url}/api/add`, {
         name: this.todoName,
         done: false,
       }).then(() => {
