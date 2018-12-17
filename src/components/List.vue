@@ -3,7 +3,7 @@
         <div v-for="todo in todos" :key="todo.key">
             <div class="container-itens">
               <div :class="[todo.done ? 'done' : '']"  class="item"  @click="makeDone(todo)">{{ todo.name }}</div>
-              <div class="remover">X</div>
+              <div class="remover" @click="remove(todo)"><i class="fas fa-times" style="font-size: 1.5em; color: Tomato;"></i></div>
             </div>
         </div>
     </div>
@@ -35,6 +35,19 @@ export default {
       axios.get(`${url}/api/all`)
         .then((response) => {
           this.todos = response.data;
+        }).catch((error) => {
+          console.log(error);
+        });
+    },
+    remove(todo) {
+      const URL = `${url}/api/delete/${todo.id}`;
+
+      axios.delete(URL)
+        .then((response) => {
+          const resposta = response.data;
+          if (resposta.type) {
+            this.list();
+          }
         }).catch((error) => {
           console.log(error);
         });
@@ -83,7 +96,7 @@ export default {
 
     .remover {
         display: flex;
-        width: 20px;
+        width: auto;
         border: 5px solid rgba(255, 151, 151, 0.49019607843137253); 
         -webkit-box-shadow: 
         inset 0 0 8px  rgba(0,0,0,0.1),
@@ -96,7 +109,7 @@ export default {
                 0 0 16px rgba(0,0,0,0.1); 
         padding: 15px;
         background: rgba(255,255,255,0.5);
-        margin: 0 0 10px 0;
+        margin: 0 5px 10px 0;
         cursor: pointer;
         align-content: center;
     }
