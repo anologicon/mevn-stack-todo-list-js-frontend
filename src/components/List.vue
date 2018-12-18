@@ -42,7 +42,7 @@ export default {
     remove(todo) {
       const URL = `${url}/api/delete/${todo.id}`;
 
-      axios.delete(URL)
+      axios.get(URL)
         .then((response) => {
           const resposta = response.data;
           if (resposta.type) {
