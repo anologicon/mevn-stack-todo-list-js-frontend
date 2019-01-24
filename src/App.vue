@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import store from './states';
+
 export default {
   name: 'app',
 };
